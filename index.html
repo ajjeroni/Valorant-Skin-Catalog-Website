@@ -2,37 +2,50 @@
 <html>
 
 <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles">
+    <title>Valorant-Weapon-Skins</title>
+    <meta name="description" content="A Catalog of Valorant Skins">
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/valorant" rel="stylesheet">
 </head>
 
 <body>
     <header class="main-header">
-        <h1 class="title">LA TV Shows</h1>
+        <h1 class="title">Valorant Weapon Skins</h1>
     </header>
-    <div id="card-container">
-        
+
+    <!--Added a tabs element to have weapon choices to browse through-->
+    <div id="tab-container">
     </div>
+
+    <div class="weapon-tabs" style="display: none;">
+        <button class="tab-content" id="buttonText">
+            <img src="" alt="Weapon name" height="40" width="140"/>
+            <h2 >Weapon</h2>
+        </button>   
+    </div>
+
+    <div id="card-container"> 
+    </div>
+
     <div class="card" style="display: none;">
         <div class="card-content">
-            <h2>TV Show Title</h2>
-            <img src="" alt="TV Show Poster">
+            <h2>Skin Title</h2>
+            <img src="" alt="Valorant Skin">
             <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
+                <li>Rarity</li>
+                <li>In-game cost</li>
+                <li>Real life cost</li>
             </ul>
         </div>
     </div>
     <div class="footer">
-        <button onclick="quoteAlert();">
+        <!-- <button onclick="quoteAlert();">
             Get A Quote!
         </button>
         <button onclick="removeLastCard();">
             Remove A Card!
-        </button>
+        </button> -->
     </div>
 </body>
 

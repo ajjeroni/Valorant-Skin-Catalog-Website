@@ -23,19 +23,69 @@
  * 
  */
 
+//commented these constants out because I will not use them 
+// const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
+// const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
+// const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
-const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
+//I also won't be using these array of strings
 // This is an array of strings (TV show titles)
-let titles = [
-    "Fresh Prince of Bel Air",
-    "Curb Your Enthusiasm",
-    "East Los High"
-];
-// Your final submission should have much more data than this, and 
-// you should use more than just an array of strings to store it all.
+// let titles = [
+//     "Fresh Prince of Bel Air",
+//     "Curb Your Enthusiasm",
+//     "East Los High"
+// ];
+
+//Here is my array and constants, Weapon names for tabs and their image urls 
+let tabTitles = [
+    "Vandal",
+    "Phantom",
+    "Melee"
+]
+
+const VANDAL_URL = "https://static.wikia.nocookie.net/valorant/images/5/56/Vandal.png/revision/latest/scale-to-width-down/200?cb=20230711205307";
+const PHANTOM_URL = "https://static.wikia.nocookie.net/valorant/images/e/ec/Phantom.png/revision/latest/scale-to-width-down/200?cb=20230711205302";
+const MELEE_URL = "https://static.wikia.nocookie.net/valorant/images/8/8f/Melee.png/revision/latest/scale-to-width-down/200?cb=20230711201118";
+
+//I need to create a function that holds the tab switching logic.
+function showTabs() {
+    const tabContainer = document.getElementById("tab-container");
+    tabContainer.innerHTML = "";
+    const templateTab = document.querySelector(".weapon-tabs")
+    
+    for (i = 0; i < tabTitles.length; i++) {
+        let weapon = tabTitles[i]
+
+        let imageURL = "";
+        if (i == 0) {
+            imageURL = VANDAL_URL;
+        } else if (i == 1) {
+            imageURL = PHANTOM_URL;
+        } else if (i == 2) {
+            imageURL = MELEE_URL;
+        }
+
+        const nextTab = templateTab.cloneNode(true);
+        editTabContent(nextTab, weapon, imageURL);
+        tabContainer.appendChild(nextTab);
+    }
+
+}
+
+function editTabContent(tab, newWeapon, newWeaponImage) {
+    tab.style.display = "block";
+
+    const tabHeader = tab.querySelector("h2");
+    tabHeader.textContent = newWeapon;
+
+    const tabImage = tab.querySelector("img");
+    tabImage.src = newWeaponImage;
+    tabImage.alt = newWeapon + "Tab";
+
+    console.log("new card:", newWeapon, "- html: ", tab);
+}
+document.addEventListener("DOMContentLoaded", showTabs);
 
 
 // This function adds cards the page to display the data in the array
@@ -83,12 +133,13 @@ function editCardContent(card, newTitle, newImageURL) {
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
 
-function quoteAlert() {
-    console.log("Button Clicked!")
-    alert("I guess I can kiss heaven goodbye, because it got to be a sin to look this good!");
-}
+//I will not use these functions/features from the starter code
+// function quoteAlert() {
+//     console.log("Button Clicked!")
+//     alert("I guess I can kiss heaven goodbye, because it got to be a sin to look this good!");
+// }
 
-function removeLastCard() {
-    titles.pop(); // Remove last item in titles array
-    showCards(); // Call showCards again to refresh
-}
+// function removeLastCard() {
+//     titles.pop(); // Remove last item in titles array
+//     showCards(); // Call showCards again to refresh
+// }
