@@ -57,12 +57,6 @@ h2 {
     background-color: #ccc;
   }
 
-/* #card-container-vandal {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-} */
-
 .vandal-card, .phantom-card, .melee-card {
     width: 300px;
     border: 1px solid #ccc;
@@ -71,12 +65,26 @@ h2 {
     margin: 5px;
 }
 
+.vandal-card-1, .phantom-card-1, .melee-card-1 {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    background-color: lightyellow;
+}
+
 .card-content {
     padding: 20px;
     color: #000000;
 }
 
 .vandal-card img, .phantom-card img, .melee-card img {
+    width: 250px;
+    height: auto;
+}
+
+.vandal-card-1 img, .phantom-card-1 img , .melee-card-1 img{
     width: 250px;
     height: auto;
 }

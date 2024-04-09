@@ -75,13 +75,29 @@ function tabButton(button) {
 
         if (i >= 0 && i < vandalDisplayIconList.length) {
           imageURL = vandalDisplayIconList[i];
-        } else {
-          console.error("Index out of bounds.");
         }
 
         const nextCard = templateCard.cloneNode(true);
         editCardContent(nextCard, vandalTitles, imageURL);
         cardContainer.appendChild(nextCard);
+
+        //favorite feature for the vandal
+        nextCard.addEventListener("click", function () {
+          let vandalDiv = this;
+          let isModified = vandalDiv.classList.contains('vandal-card-1');
+          if (isModified) {
+              vandalDiv.classList.replace('vandal-card-1', 'vandal-card');
+              vandalDiv.removeChild(vandalDiv.querySelector('img.favorite'));
+          } else {
+              vandalDiv.classList.replace('vandal-card', 'vandal-card-1');
+              let favorite = document.createElement('img');
+              favorite.src = 'favorite-35 (1).png';
+              favorite.style.width = '50px';
+              favorite.style.height = '50px';
+              favorite.classList.add('favorite');
+              vandalDiv.appendChild(favorite);
+          }
+      });
       }
     }
     function editCardContent(card, newTitle, newImageURL) {
@@ -116,13 +132,29 @@ function tabButton(button) {
 
         if (i >= 0 && i < phantomDisplayIconList.length) {
           imageURL = phantomDisplayIconList[i];
-        } else {
-          console.error("Index out of bounds.");
         }
 
         const nextCard = templateCard.cloneNode(true);
         editCardContent(nextCard, phantomTitles, imageURL);
         cardContainer.appendChild(nextCard);
+
+        //favorite feature for the phantom
+        nextCard.addEventListener("click", function () {
+          let phantomDiv = this;
+          let isModified = phantomDiv.classList.contains('phantom-card-1');
+          if (isModified) {
+              phantomDiv.classList.replace('phantom-card-1', 'phantom-card');
+              phantomDiv.removeChild(phantomDiv.querySelector('img.favorite'));
+          } else {
+              phantomDiv.classList.replace('phantom-card', 'phantom-card-1');
+              let favorite = document.createElement('img');
+              favorite.src = 'favorite-35 (1).png';
+              favorite.style.width = '50px';
+              favorite.style.height = '50px';
+              favorite.classList.add('favorite');
+              phantomDiv.appendChild(favorite);
+          }
+      });
       }
     }
     function editCardContent(card, newTitle, newImageURL) {
@@ -156,13 +188,29 @@ function tabButton(button) {
 
         if (i >= 0 && i < meleeDisplayIconList.length) {
           imageURL = meleeDisplayIconList[i];
-        } else {
-          console.error("Index out of bounds.");
         }
 
         const nextCard = templateCard.cloneNode(true);
         editCardContent(nextCard, meleeTitles, imageURL);
         cardContainer.appendChild(nextCard);
+
+        //favorite feature for the melee
+        nextCard.addEventListener("click", function () {
+          let meleeDiv = this;
+          let isModified = meleeDiv.classList.contains('melee-card-1');
+          if (isModified) {
+              meleeDiv.classList.replace('melee-card-1', 'melee-card');
+              meleeDiv.removeChild(meleeDiv.querySelector('img.favorite'));
+          } else {
+              meleeDiv.classList.replace('melee-card', 'melee-card-1');
+              let favorite = document.createElement('img');
+              favorite.src = 'favorite-35 (1).png';
+              favorite.style.width = '50px';
+              favorite.style.height = '50px';
+              favorite.classList.add('favorite');
+              meleeDiv.appendChild(favorite);
+          }
+      });
       }
     }
     function editCardContent(card, newTitle, newImageURL) {
