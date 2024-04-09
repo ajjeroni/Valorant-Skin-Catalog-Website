@@ -2,11 +2,11 @@
 let tabTitles = ["Vandal", "Phantom", "Melee"];
 
 const VANDAL_URL =
-  "https://static.wikia.nocookie.net/valorant/images/5/56/Vandal.png/revision/latest/scale-to-width-down/200?cb=20230711205307";
+  "https://vgraphs.com/images/weapons/valorant-vandal-profile-icon.png";
 const PHANTOM_URL =
-  "https://static.wikia.nocookie.net/valorant/images/e/ec/Phantom.png/revision/latest/scale-to-width-down/200?cb=20230711205302";
+  "https://vgraphs.com/images/weapons/valorant-phantom-profile-icon.png";
 const MELEE_URL =
-  "https://static.wikia.nocookie.net/valorant/images/8/8f/Melee.png/revision/latest/scale-to-width-down/200?cb=20230711201118";
+  "https://vgraphs.com/images/weapons/valorant-melee-profile-icon.png";
 
 //Api's for each weapon skins (some skin urls are null)
 const valorantVandalApi =
