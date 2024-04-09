@@ -11,11 +11,15 @@
 
 <body>
     <header class="main-header">
-        <h1 class="title">Valorant Weapon Skins</h1>
+        <h1>Valorant Weapon Skins</h1>
+        <h2>Choose Weapon you would want to see the skins for!<br>(Click on Weapon Cards to favorite and click again to unfavorite)</h2>
     </header>
 
     <!--Added a tabs element to have weapon choices to browse through-->
-    <div id="tab-container">
+    <div id="tab-container" class="sticky">
+    </div>
+    <div class="sideButtons">
+        <button onclick="deleteButton()">Delete</button>
     </div>
 
     <div class="weapon-tabs" style="display: none;" id="weapon-">
@@ -25,14 +29,14 @@
         </button>   
     </div>
 
-
+    <!--Added 3 card containers for each weapon-->
     <div id="card-container-vandal"> 
     </div>
     <div id="card-container-phantom"> 
     </div>
     <div id="card-container-melee"> 
     </div>
-
+    <!--Added 3 card blue prints to clone for each weapon-->
     <div class="vandal-card" style="display: none;" id="vandal-click">
         <div class="card-content">
             <h2>Vandal</h2>

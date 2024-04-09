@@ -8,6 +8,99 @@ const PHANTOM_URL =
 const MELEE_URL =
   "https://static.wikia.nocookie.net/valorant/images/8/8f/Melee.png/revision/latest/scale-to-width-down/200?cb=20230711201118";
 
+//Api's for each weapon skins (some skin urls are null)
+const valorantVandalApi =
+  "https://valorant-api.com/v1/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872";
+const valorantPhantomApi =
+  "https://valorant-api.com/v1/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a";
+const valorantMeleeApi =
+  "https://valorant-api.com/v1/weapons/2f59173c-4bed-b6c3-2191-dea9b58be9c7";
+
+//parsing json for Vandal Skins & making it available globally
+const vandalDisplayNameList = [];
+const vandalDisplayIconList = [];
+fetch(valorantVandalApi)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (data && data.data && data.data.skins) {
+      const skins = data.data.skins;
+
+      skins.forEach((skin) => {
+        const vandalDisplayName = skin.displayName;
+        const VandalDisplayIcon = skin.displayIcon;
+        vandalDisplayNameList.push(vandalDisplayName);
+        vandalDisplayIconList.push(VandalDisplayIcon);
+      });
+    } else {
+      console.error("No skin data found in the response.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+//parsing json for Phantom Skins & making it available globally
+const phantomDisplayNameList = [];
+const phantomDisplayIconList = [];
+fetch(valorantPhantomApi)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (data && data.data && data.data.skins) {
+      const skins = data.data.skins;
+
+      skins.forEach((skin) => {
+        const phantomDisplayName = skin.displayName;
+        const phantomDisplayIcon = skin.displayIcon;
+        phantomDisplayNameList.push(phantomDisplayName);
+        phantomDisplayIconList.push(phantomDisplayIcon);
+      });
+    } else {
+      console.error("No skin data found in the response.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+//parsing for Melee skins & making it available globally
+const meleeDisplayNameList = [];
+const meleeDisplayIconList = [];
+fetch(valorantMeleeApi)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (data && data.data && data.data.skins) {
+      const skins = data.data.skins;
+
+      skins.forEach((skin) => {
+        const meleeDisplayName = skin.displayName;
+        const meleeDisplayIcon = skin.displayIcon;
+        meleeDisplayNameList.push(meleeDisplayName);
+        meleeDisplayIconList.push(meleeDisplayIcon);
+      });
+    } else {
+      console.error("No skin data found in the response.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+
 //A function that adds tabs to the page from the arrays and urls
 function showTabs() {
   const tabContainer = document.getElementById("tab-container");
@@ -51,8 +144,7 @@ function editTabContent(tab, newWeapon, newWeaponImage) {
 
 document.addEventListener("DOMContentLoaded", showTabs);
 
-//A function that changes the card container dynamically based on the tab buttons.
-
+// function that changes the card container dynamically based on the tab buttons.
 function tabButton(button) {
   console.log(button.id);
   if (button.id === "button-Vandal") {
@@ -99,6 +191,7 @@ function tabButton(button) {
           }
       });
       }
+      
     }
     function editCardContent(card, newTitle, newImageURL) {
       card.style.display = "block";
@@ -227,94 +320,7 @@ function tabButton(button) {
   }
 }
 
-//Api's for each weapon skins
-const valorantVandalApi =
-  "https://valorant-api.com/v1/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872";
-const valorantPhantomApi =
-  "https://valorant-api.com/v1/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a";
-const valorantMeleeApi =
-  "https://valorant-api.com/v1/weapons/2f59173c-4bed-b6c3-2191-dea9b58be9c7";
-
-//parsing json for Vandal Skins & making it available globally
-const vandalDisplayNameList = [];
-const vandalDisplayIconList = [];
-fetch(valorantVandalApi)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    if (data && data.data && data.data.skins) {
-      const skins = data.data.skins;
-
-      skins.forEach((skin) => {
-        const vandalDisplayName = skin.displayName;
-        const VandalDisplayIcon = skin.displayIcon;
-        vandalDisplayNameList.push(vandalDisplayName);
-        vandalDisplayIconList.push(VandalDisplayIcon);
-      });
-    } else {
-      console.error("No skin data found in the response.");
-    }
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
-
-//parsing json for Phantom Skins & making it available globally
-const phantomDisplayNameList = [];
-const phantomDisplayIconList = [];
-fetch(valorantPhantomApi)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    if (data && data.data && data.data.skins) {
-      const skins = data.data.skins;
-
-      skins.forEach((skin) => {
-        const phantomDisplayName = skin.displayName;
-        const phantomDisplayIcon = skin.displayIcon;
-        phantomDisplayNameList.push(phantomDisplayName);
-        phantomDisplayIconList.push(phantomDisplayIcon);
-      });
-    } else {
-      console.error("No skin data found in the response.");
-    }
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
-
-//parsing for Melee skins & making it available globally
-const meleeDisplayNameList = [];
-const meleeDisplayIconList = [];
-fetch(valorantMeleeApi)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    if (data && data.data && data.data.skins) {
-      const skins = data.data.skins;
-
-      skins.forEach((skin) => {
-        const meleeDisplayName = skin.displayName;
-        const meleeDisplayIcon = skin.displayIcon;
-        meleeDisplayNameList.push(meleeDisplayName);
-        meleeDisplayIconList.push(meleeDisplayIcon);
-      });
-    } else {
-      console.error("No skin data found in the response.");
-    }
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+//This delete feature will be challenging, as It will change the favorite/unfavorite feature as wel.
+function deleteButton(){
+  alert('Feature yet to come!');
+}
