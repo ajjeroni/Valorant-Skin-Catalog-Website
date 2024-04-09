@@ -1,28 +1,3 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
-
 //Here is my array and constants, Weapon names for tabs and their image urls
 let tabTitles = ["Vandal", "Phantom", "Melee"];
 
@@ -81,26 +56,126 @@ document.addEventListener("DOMContentLoaded", showTabs);
 function tabButton(button) {
   console.log(button.id);
   if (button.id === "button-Vandal") {
-    const vandalCards = document.getElementById("vandal-card");
-    const phantomCards = document.getElementById("phantom-card");
-    const meleeCards = document.getElementById("melee-card");
-    vandalCards.style.display = "block";
-    phantomCards.style.display = "none";
-    meleeCards.style.display = "none";
+    const vandalCardContainer = document.getElementById(
+      "card-container-vandal"
+    );
+    const phantomCardContainer = document.getElementById(
+      "card-container-phantom"
+    );
+    const meleeCardContainer = document.getElementById("card-container-melee");
+    vandalCardContainer.style.display = "block";
+    phantomCardContainer.style.display = "none";
+    meleeCardContainer.style.display = "none";
+    function showCards() {
+      const cardContainer = document.getElementById("card-container-vandal");
+      cardContainer.innerHTML = "";
+      const templateCard = document.querySelector(".vandal-card");
+      for (i = 0; i < vandalDisplayNameList.length; i++) {
+        let vandalTitles = vandalDisplayNameList[i];
+
+        if (i >= 0 && i < vandalDisplayIconList.length) {
+          imageURL = vandalDisplayIconList[i];
+        } else {
+          console.error("Index out of bounds.");
+        }
+
+        const nextCard = templateCard.cloneNode(true);
+        editCardContent(nextCard, vandalTitles, imageURL);
+        cardContainer.appendChild(nextCard);
+      }
+    }
+    function editCardContent(card, newTitle, newImageURL) {
+      card.style.display = "block";
+
+      const cardHeader = card.querySelector("h2");
+      cardHeader.textContent = newTitle;
+
+      const cardImage = card.querySelector("img");
+      cardImage.src = newImageURL;
+      cardImage.alt = newTitle + " Skin";
+    }
+    showCards();
   } else if (button.id === "button-Phantom") {
-    const vandalCards = document.getElementById("vandal-card");
-    const phantomCards = document.getElementById("phantom-card");
-    const meleeCards = document.getElementById("melee-card");
-    phantomCards.style.display = "block";
-    vandalCards.style.display = "none";
-    meleeCards.style.display = "none";
+    const vandalCardContainer = document.getElementById(
+      "card-container-vandal"
+    );
+    const phantomCardContainer = document.getElementById(
+      "card-container-phantom"
+    );
+    const meleeCardContainer = document.getElementById("card-container-melee");
+    vandalCardContainer.style.display = "none";
+    phantomCardContainer.style.display = "block";
+    meleeCardContainer.style.display = "none";
+
+    function showCards() {
+      const cardContainer = document.getElementById("card-container-phantom");
+      cardContainer.innerHTML = "";
+      const templateCard = document.querySelector(".phantom-card");
+      for (i = 0; i < phantomDisplayNameList.length; i++) {
+        let phantomTitles = phantomDisplayNameList[i];
+
+        if (i >= 0 && i < phantomDisplayIconList.length) {
+          imageURL = phantomDisplayIconList[i];
+        } else {
+          console.error("Index out of bounds.");
+        }
+
+        const nextCard = templateCard.cloneNode(true);
+        editCardContent(nextCard, phantomTitles, imageURL);
+        cardContainer.appendChild(nextCard);
+      }
+    }
+    function editCardContent(card, newTitle, newImageURL) {
+      card.style.display = "block";
+
+      const cardHeader = card.querySelector("h2");
+      cardHeader.textContent = newTitle;
+
+      const cardImage = card.querySelector("img");
+      cardImage.src = newImageURL;
+      cardImage.alt = newTitle + " Skin";
+    }
+    showCards();
   } else if (button.id === "button-Melee") {
-    const vandalCards = document.getElementById("vandal-card");
-    const phantomCards = document.getElementById("phantom-card");
-    const meleeCards = document.getElementById("melee-card");
-    meleeCards.style.display = "block";
-    phantomCards.style.display = "none";
-    vandalCards.style.display = "none";
+    const vandalCardContainer = document.getElementById(
+      "card-container-vandal"
+    );
+    const phantomCardContainer = document.getElementById(
+      "card-container-phantom"
+    );
+    const meleeCardContainer = document.getElementById("card-container-melee");
+    vandalCardContainer.style.display = "none";
+    phantomCardContainer.style.display = "none";
+    meleeCardContainer.style.display = "block";
+    function showCards() {
+      const cardContainer = document.getElementById("card-container-melee");
+      cardContainer.innerHTML = "";
+      const templateCard = document.querySelector(".melee-card");
+      for (i = 0; i < meleeDisplayNameList.length; i++) {
+        let meleeTitles = meleeDisplayNameList[i];
+
+        if (i >= 0 && i < meleeDisplayIconList.length) {
+          imageURL = meleeDisplayIconList[i];
+        } else {
+          console.error("Index out of bounds.");
+        }
+
+        const nextCard = templateCard.cloneNode(true);
+        editCardContent(nextCard, meleeTitles, imageURL);
+        cardContainer.appendChild(nextCard);
+      }
+    }
+    function editCardContent(card, newTitle, newImageURL) {
+      card.style.display = "block";
+
+      const cardHeader = card.querySelector("h2");
+      cardHeader.textContent = newTitle;
+
+      const cardImage = card.querySelector("img");
+      cardImage.src = newImageURL;
+      cardImage.alt = newTitle + " Skin";
+    }
+    showCards();
   }
 }
 
@@ -112,7 +187,9 @@ const valorantPhantomApi =
 const valorantMeleeApi =
   "https://valorant-api.com/v1/weapons/2f59173c-4bed-b6c3-2191-dea9b58be9c7";
 
-//parsing json for Vandal Skins
+//parsing json for Vandal Skins & making it available globally
+const vandalDisplayNameList = [];
+const vandalDisplayIconList = [];
 fetch(valorantVandalApi)
   .then((response) => {
     if (!response.ok) {
@@ -125,10 +202,10 @@ fetch(valorantVandalApi)
       const skins = data.data.skins;
 
       skins.forEach((skin) => {
-        const displayName = skin.displayName;
-        const displayIcon = skin.displayIcon;
-
-        console.log("Vandal Skin Name & Icon:", displayName, displayIcon);
+        const vandalDisplayName = skin.displayName;
+        const VandalDisplayIcon = skin.displayIcon;
+        vandalDisplayNameList.push(vandalDisplayName);
+        vandalDisplayIconList.push(VandalDisplayIcon);
       });
     } else {
       console.error("No skin data found in the response.");
@@ -138,7 +215,9 @@ fetch(valorantVandalApi)
     console.error("Error:", error);
   });
 
-//parsing json for Phantom Skins
+//parsing json for Phantom Skins & making it available globally
+const phantomDisplayNameList = [];
+const phantomDisplayIconList = [];
 fetch(valorantPhantomApi)
   .then((response) => {
     if (!response.ok) {
@@ -151,10 +230,10 @@ fetch(valorantPhantomApi)
       const skins = data.data.skins;
 
       skins.forEach((skin) => {
-        const displayName = skin.displayName;
-        const displayIcon = skin.displayIcon;
-
-        console.log("Phantom Skin Name & Icon:", displayName, displayIcon);
+        const phantomDisplayName = skin.displayName;
+        const phantomDisplayIcon = skin.displayIcon;
+        phantomDisplayNameList.push(phantomDisplayName);
+        phantomDisplayIconList.push(phantomDisplayIcon);
       });
     } else {
       console.error("No skin data found in the response.");
@@ -164,7 +243,9 @@ fetch(valorantPhantomApi)
     console.error("Error:", error);
   });
 
-//parsing for Melee skins
+//parsing for Melee skins & making it available globally
+const meleeDisplayNameList = [];
+const meleeDisplayIconList = [];
 fetch(valorantMeleeApi)
   .then((response) => {
     if (!response.ok) {
@@ -177,10 +258,10 @@ fetch(valorantMeleeApi)
       const skins = data.data.skins;
 
       skins.forEach((skin) => {
-        const displayName = skin.displayName;
-        const displayIcon = skin.displayIcon;
-
-        console.log("Melee Skin Name & Icon:", displayName, displayIcon);
+        const meleeDisplayName = skin.displayName;
+        const meleeDisplayIcon = skin.displayIcon;
+        meleeDisplayNameList.push(meleeDisplayName);
+        meleeDisplayIconList.push(meleeDisplayIcon);
       });
     } else {
       console.error("No skin data found in the response.");

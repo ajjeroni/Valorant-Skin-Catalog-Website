@@ -2,6 +2,8 @@ html,
 body {
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 h2 {
     margin-block-start: 0;
@@ -39,10 +41,12 @@ h2 {
     height: 90px;
     float: left;
     border: none;
+    border-radius: 10px;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    margin: 5px;
   }
 
 .weapon-tabs button:hover {
@@ -53,13 +57,13 @@ h2 {
     background-color: #ccc;
   }
 
-#card-container {
+/* #card-container-vandal {
     display: flex;
     justify-content: center;
     margin: 20px;
-}
+} */
 
-.card {
+.vandal-card, .phantom-card, .melee-card {
     width: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -69,37 +73,10 @@ h2 {
 
 .card-content {
     padding: 20px;
-    font-family: "Verdana";
-    color: #777;
+    color: #000000;
 }
 
-.card-content h2 {
-    margin-top: 0;
-    font-size: 20px;
-}
-
-.card img {
-    width: 100%;
+.vandal-card img, .phantom-card img, .melee-card img {
+    width: 250px;
     height: auto;
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, .3);
-    padding: 10px;
-}
-
-button {
-    text-align: center;
-    background-color: #666;
-    border: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 40px;
-    border-radius: 10px;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    margin: 5px;
 }
