@@ -18,19 +18,19 @@
     <div id="tab-container">
     </div>
 
-    <div class="weapon-tabs" style="display: none;">
-        <button class="tab-content" id="buttonText">
+    <div class="weapon-tabs" style="display: none;" id="weapon-">
+        <button onclick='tabButton(this)' id="button-">
             <img src="" alt="Weapon name" height="40" width="140"/>
-            <h2 >Weapon</h2>
+            <h2>Weapon</h2>
         </button>   
     </div>
 
     <div id="card-container"> 
     </div>
 
-    <div class="card" style="display: none;">
+    <div class="card" style="display: none;" id="vandal-card">
         <div class="card-content">
-            <h2>Skin Title</h2>
+            <h2>Vandal</h2>
             <img src="" alt="Valorant Skin">
             <ul>
                 <li>Rarity</li>
@@ -39,13 +39,26 @@
             </ul>
         </div>
     </div>
-    <div class="footer">
-        <!-- <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button> -->
+    <div class="card" style="display: none;" id="phantom-card">
+        <div class="card-content">
+            <h2>Phantom</h2>
+            <img src="" alt="Valorant Skin">
+            <ul>
+                <li>Rarity</li>
+                <li>In-game cost</li>
+                <li>Real life cost</li>
+            </ul>
+        </div>
+    </div><div class="card" style="display: none;" id="melee-card">
+        <div class="card-content">
+            <h2>Melee</h2>
+            <img src="" alt="Valorant Skin">
+            <ul>
+                <li>Rarity</li>
+                <li>In-game cost</li>
+                <li>Real life cost</li>
+            </ul>
+        </div>
     </div>
 </body>
 
