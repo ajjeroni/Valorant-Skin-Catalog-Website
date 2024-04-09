@@ -23,19 +23,6 @@
  *
  */
 
-//commented these constants out because I will not use them
-// const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-// const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-// const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
-//I also won't be using these array of strings
-// This is an array of strings (TV show titles)
-// let titles = [
-//     "Fresh Prince of Bel Air",
-//     "Curb Your Enthusiasm",
-//     "East Los High"
-// ];
-
 //Here is my array and constants, Weapon names for tabs and their image urls
 let tabTitles = ["Vandal", "Phantom", "Melee"];
 
@@ -89,7 +76,8 @@ function editTabContent(tab, newWeapon, newWeaponImage) {
 
 document.addEventListener("DOMContentLoaded", showTabs);
 
-//A function that changes the card container dynamically based on the tab buttons. 
+//A function that changes the card container dynamically based on the tab buttons.
+
 function tabButton(button) {
   console.log(button.id);
   if (button.id === "button-Vandal") {
@@ -116,58 +104,88 @@ function tabButton(button) {
   }
 }
 
-// This function adds cards the page to display the data in the array
-function showCards() {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
+//Api's for each weapon skins
+const valorantVandalApi =
+  "https://valorant-api.com/v1/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872";
+const valorantPhantomApi =
+  "https://valorant-api.com/v1/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a";
+const valorantMeleeApi =
+  "https://valorant-api.com/v1/weapons/2f59173c-4bed-b6c3-2191-dea9b58be9c7";
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
-
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
+//parsing json for Vandal Skins
+fetch(valorantVandalApi)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
+    return response.json();
+  })
+  .then((data) => {
+    if (data && data.data && data.data.skins) {
+      const skins = data.data.skins;
 
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
-  }
-}
+      skins.forEach((skin) => {
+        const displayName = skin.displayName;
+        const displayIcon = skin.displayIcon;
 
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
+        console.log("Vandal Skin Name & Icon:", displayName, displayIcon);
+      });
+    } else {
+      console.error("No skin data found in the response.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+//parsing json for Phantom Skins
+fetch(valorantPhantomApi)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (data && data.data && data.data.skins) {
+      const skins = data.data.skins;
 
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+      skins.forEach((skin) => {
+        const displayName = skin.displayName;
+        const displayIcon = skin.displayIcon;
 
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
-}
+        console.log("Phantom Skin Name & Icon:", displayName, displayIcon);
+      });
+    } else {
+      console.error("No skin data found in the response.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+//parsing for Melee skins
+fetch(valorantMeleeApi)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (data && data.data && data.data.skins) {
+      const skins = data.data.skins;
 
-//I will not use these functions/features from the starter code
-// function quoteAlert() {
-//     console.log("Button Clicked!")
-//     alert("I guess I can kiss heaven goodbye, because it got to be a sin to look this good!");
-// }
+      skins.forEach((skin) => {
+        const displayName = skin.displayName;
+        const displayIcon = skin.displayIcon;
 
-// function removeLastCard() {
-//     titles.pop(); // Remove last item in titles array
-//     showCards(); // Call showCards again to refresh
-// }
+        console.log("Melee Skin Name & Icon:", displayName, displayIcon);
+      });
+    } else {
+      console.error("No skin data found in the response.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
