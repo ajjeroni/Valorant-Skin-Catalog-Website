@@ -40,9 +40,8 @@ h2 {
 #tab-container {
     display: flex;
     justify-content: center;
-    margin-top: 210px;
     position: fixed; 
-    top: 0; 
+    top: 22%; 
     width: 50%;
     left: 25%;
     z-index: 999;
