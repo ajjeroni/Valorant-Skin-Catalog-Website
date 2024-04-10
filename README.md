@@ -1,16 +1,16 @@
 # Valorant Skin Catalog Website
 
-This website is a catalog asessment project, the purpose of it is to demonstrate my understanding of basic data structures by using vanilla JavaScript, HTML, and CSS. My task was to operate the data of my choice by adding 2 or more features to my catalog website. The theme of my website is Valorant, since I am an avid gamer and collector of skins. 
+This website is a catalog assessment project, the purpose is to demonstrate my understanding of basic data structures by using vanilla JavaScript, HTML, and CSS. My task was to operate the data of my choice by adding 2 or more features to my catalog website. The theme of my website is Valorant since I am an avid gamer and collector of skins. 
 
 ## Getting Started
 
-To use *Valorant Skin Catalog Website*, simply visit the live website through the link below.
+To use *Valorant Skin Catalog Website*, visit the live website through the link below.
 
 ## Features
 
 - Choose which weapon you want to see the skins for. (These are my top 3 weapon choices)
 - Once the weapon tab is selected, click the skin you like to favorite it.
-- If you want to unfavorite a skin, just click on it again.
+- If you want to unfavorite a skin, click on it again.
 - *Delete Feature is not finished yet.*
 
 ## Technologies Used
@@ -30,4 +30,4 @@ To use *Valorant Skin Catalog Website*, simply visit the live website through th
 
 ## Links
 
-* [Live Page]()
+* [Live Page](https://ajjeroni.github.io/Valorant-Skin-Catalog-Website/)
